@@ -1,0 +1,40 @@
+<?php
+
+/**
+ * Arquivo: layout_1.phtml (UTF-8)
+ *
+ * Data: 23/10/2014
+ * @author André Luis Rocha Menutole <andre.rocha@superpay.com.br>
+ */
+?>
+<html>
+    <head>
+        <title>Layout</title>
+        <style>
+            body{
+                margin: 0;
+                padding: 0;
+            }
+            #topo, #bottom{
+                width: 100%; 
+                background-color: blue; 
+                text-align: center;
+                padding: 10px;
+            }
+            #conteudo{
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="topo">
+            Topo
+        </div>
+        <div id="conteudo" style="width: 100%; height: 200px;">
+            <?php echo $this->content; ?>
+        </div>
+        <div id="bottom">
+            Bottom
+        </div>
+    </body>
+</html>

@@ -1,0 +1,12 @@
+{
+    "name": "SpFramework",
+    "require": {
+    },
+    "autoload": {
+        "psr-4": {
+            "Application\\": "app",
+            "Core\\": "system"
+        }
+    }
+
+}
