@@ -1,12 +1,21 @@
 {
-    "name": "SpFramework",
+    "name": "legacy-framework",
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.zendframework.com/"
+        }
+    ],
     "require": {
+        "php": ">=5.3.3",
+        "zendframework/zend-db": "2.*"
     },
     "autoload": {
         "psr-4": {
             "Application\\": "app",
-            "Core\\": "system"
+            "Core\\": "system",
+            "Library\\": "library",
+            "Zend\\Db\\": "Zend/Db"
         }
     }
-
 }

@@ -10,6 +10,7 @@
 namespace Core;
 
 use Exception;
+use Core\Helpers\AuthHelper;
 
 class Bootstrap {
 
@@ -19,7 +20,7 @@ class Bootstrap {
         $controlerPath = APP_PATH . $module . DS . CONTROLLERS . $controller . ".php";
         $action = $request->getAction() . "Action";
         $params = $request->getParams();
-
+        
         if (is_readable($controlerPath)) {
 
             $controllerName = "Application\\" . $module . "\Controller\\" . $controller;
@@ -27,12 +28,18 @@ class Bootstrap {
 
             if (!method_exists($app, $action))
                 throw new Exception('Houve um erro. Está action não existe.');
-
+            
+            Bootstrap::checkAuth();
             $app->init();
             $app->$action();
         }else {
             throw new Exception('Houve um erro. Este controller não existe.');
         }
+    }
+    
+    public static function checkAuth() {
+        $auth = new AuthHelper();
+        $auth->setLoginModule('login')->setLoginController('login')->checkLogin('redirect');
     }
 
 }

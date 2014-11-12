@@ -1,19 +1,19 @@
 <?php
 
 /**
- * Arquivo: RedirectorHelper.php (UTF-8)
+ * Arquivo: Redirect.php (UTF-8)
  *
  * Data: 17/10/2014
  * @author André Luis Rocha Menutole <andre.rocha@superpay.com.br>
  */
 
-namespace Core\Helpers;
+namespace Core;
 
 /**
- * Class RedirectorHelper
- * @package Core\Helpers
+ * Class Redirect;
+ * @package Core
  */
-class RedirectorHelper {
+class Redirect {
 
     protected $parameters = array();
 
@@ -21,7 +21,6 @@ class RedirectorHelper {
         $uri = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
         $uri = str_replace("/public", "", $uri);
         header("Location:" . $uri . "/" . $data);
-        exit();
     }
 
     public function setUrlParameter($name, $value) {
@@ -30,20 +29,14 @@ class RedirectorHelper {
     }
 
     protected function getUrlParameters() {
-        $parms = "";
+        $parms .= "";
         foreach ($this->parameters as $name => $value)
             $parms .= $name . '/' . $value . '/';
         return $parms;
     }
 
     public function toRoute(array $route) {
-        
-        $url = '';
-        $url .= (isset($route['module']) ? $route['module'].'/' : '');
-        $url .= (isset($route['controller']) ? $route['controller'].'/' : '');
-        $url .= (isset($route['action']) ? $route['action'].'/' : '');
-        
-        $this->go($url . $this->getUrlParameters());
+        $this->go($route['module'] . '/' . $route['controller'] . '/' . $route['action'] . '/' . $this->getUrlParameters());
     }
 
     public function toUrl($url) {

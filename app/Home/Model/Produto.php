@@ -9,11 +9,11 @@
 
 namespace Application\Home\Model;
 
-use Core\Model;
+use Core\AbstractModel;
 
 //Model Exemplo
 
-class Produto extends Model{
+class Produto extends AbstractModel{
     public $tabela = "posts";
     
     public function listaProdutos($qtd, $offset = null) {
